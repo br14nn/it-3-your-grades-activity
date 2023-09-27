@@ -1,23 +1,11 @@
 import { useState } from "react";
 import AddGradesForm from "./components/AddGradesForm/AddGradesForm";
 import GradesTable from "./components/GradesTable/GradesTable";
-
-type TGradesForm = {
-  courseNumb: number;
-  courseName: string;
-  courseUnits: number;
-  courseGrade: number;
-};
-
-type TGradesList = {
-  courseNumb: string;
-  courseName: string;
-  courseUnits: number;
-  courseGrade: number;
-};
+import { TAddGradesForm } from "./types/TAddGradesForm";
+import { TGradesList } from "./types/TGradesList";
 
 export default function App() {
-  const [addGradesForm, setAddGradesForm] = useState<TGradesForm>({
+  const [addGradesForm, setAddGradesForm] = useState<TAddGradesForm>({
     courseNumb: 0,
     courseName: "",
     courseUnits: 0,
@@ -41,7 +29,7 @@ export default function App() {
       courseNumb: "IT002",
       courseName: "IT Elective 3",
       courseUnits: 3,
-      courseGrade: 3.5,
+      courseGrade: 0,
     },
   ]);
 
