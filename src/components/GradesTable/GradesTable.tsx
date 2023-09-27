@@ -16,12 +16,20 @@ export default function GradesTable({ gradesList }: TGradesTableProps) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <CustomTd>IT001</CustomTd>
-          <CustomTd>Computer Programming 1</CustomTd>
-          <CustomTd>5</CustomTd>
-          <CustomTd>A</CustomTd>
-        </tr>
+        {gradesList.map((val, idx) => (
+          <tr key={`${val.courseNumb}-${idx}`}>
+            <CustomTd>{val.courseNumb}</CustomTd>
+            <CustomTd>{val.courseName}</CustomTd>
+            <CustomTd>{val.courseUnits}</CustomTd>
+            {parseFloat(val.courseGrade) === 4.0 && <CustomTd>A</CustomTd>}
+            {parseFloat(val.courseGrade) === 3.5 && <CustomTd>B+</CustomTd>}
+            {parseFloat(val.courseGrade) === 3.0 && <CustomTd>B</CustomTd>}
+            {parseFloat(val.courseGrade) === 2.5 && <CustomTd>C+</CustomTd>}
+            {parseFloat(val.courseGrade) === 2.0 && <CustomTd>C</CustomTd>}
+            {parseFloat(val.courseGrade) === 1.0 && <CustomTd>D</CustomTd>}
+            {parseFloat(val.courseGrade) === 0.0 && <CustomTd>F</CustomTd>}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
