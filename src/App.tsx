@@ -52,7 +52,7 @@ export default function App() {
 
         <div className="flex flex-col gap-4">
           <CustomInput
-            className="w-1/2"
+            className="w-1/2 px-2  leading-none"
             id="searchCourse"
             name="searchCourse"
             type="text"

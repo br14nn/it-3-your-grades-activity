@@ -13,6 +13,7 @@ export default function AddGradesForm({ onChange }: TAddGradesFormProps) {
           Course No.
         </label>
         <CustomInput
+          className="px-2 leading-none"
           id="courseNumb"
           name="courseNumb"
           type="text"
@@ -25,6 +26,7 @@ export default function AddGradesForm({ onChange }: TAddGradesFormProps) {
           Course Name
         </label>
         <CustomInput
+          className="px-2 leading-none"
           id="courseName"
           name="courseName"
           type="text"
@@ -37,6 +39,7 @@ export default function AddGradesForm({ onChange }: TAddGradesFormProps) {
           Units
         </label>
         <CustomInput
+          className="px-2 leading-none"
           id="units"
           name="courseUnits"
           type="number"
