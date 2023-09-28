@@ -1,23 +1,12 @@
 import { useState } from "react";
 import AddGradesForm from "./components/AddGradesForm/AddGradesForm";
 import GradesTable from "./components/GradesTable/GradesTable";
-
-type TGradesForm = {
-  courseNumb: number;
-  courseName: string;
-  courseUnits: number;
-  courseGrade: number;
-};
-
-type TGradesList = {
-  courseNumb: string;
-  courseName: string;
-  courseUnits: number;
-  courseGrade: number;
-};
+import { TAddGradesForm } from "./types/TAddGradesForm";
+import { TGradesList } from "./types/TGradesList";
+import CustomInput from "./components/CustomInput/CustomInput";
 
 export default function App() {
-  const [addGradesForm, setAddGradesForm] = useState<TGradesForm>({
+  const [addGradesForm, setAddGradesForm] = useState<TAddGradesForm>({
     courseNumb: 0,
     courseName: "",
     courseUnits: 0,
@@ -41,7 +30,7 @@ export default function App() {
       courseNumb: "IT002",
       courseName: "IT Elective 3",
       courseUnits: 3,
-      courseGrade: 3.5,
+      courseGrade: 0,
     },
   ]);
 
@@ -58,10 +47,19 @@ export default function App() {
 
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center bg-black">
-      <section className="flex flex-row gap-4 2xl:w-[1536px]">
+      <section className="flex flex-row items-start justify-center gap-4 2xl:w-[1536px]">
         <AddGradesForm onChange={handleChange} />
 
-        <GradesTable gradesList={gradesList} />
+        <div className="flex flex-col gap-4">
+          <CustomInput
+            className="w-1/2 px-2  leading-none"
+            id="searchCourse"
+            name="searchCourse"
+            type="text"
+            placeholder="Search Course"
+          />
+          <GradesTable gradesList={gradesList} />
+        </div>
       </section>
     </main>
   );

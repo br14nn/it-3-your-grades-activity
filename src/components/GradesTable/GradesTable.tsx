@@ -27,7 +27,9 @@ export default function GradesTable({ gradesList }: TGradesTableProps) {
             {parseFloat(val.courseGrade) === 2.5 && <CustomTd>C+</CustomTd>}
             {parseFloat(val.courseGrade) === 2.0 && <CustomTd>C</CustomTd>}
             {parseFloat(val.courseGrade) === 1.0 && <CustomTd>D</CustomTd>}
-            {parseFloat(val.courseGrade) === 0.0 && <CustomTd>F</CustomTd>}
+            {parseFloat(val.courseGrade) === 0.0 && (
+              <CustomTd className="text-red-600">F</CustomTd>
+            )}
           </tr>
         ))}
       </tbody>
