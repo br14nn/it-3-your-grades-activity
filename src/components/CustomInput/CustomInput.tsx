@@ -5,6 +5,7 @@ type TCustomInputProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   type: React.HTMLInputTypeAttribute;
   value?: string | number | readonly string[] | undefined;
+  placeholder?: string;
 };
 
 export default function CustomInput({
@@ -14,6 +15,7 @@ export default function CustomInput({
   type,
   onChange,
   value,
+  placeholder,
 }: TCustomInputProps) {
   return (
     <input
@@ -23,6 +25,7 @@ export default function CustomInput({
       type={type}
       onChange={onChange}
       value={value}
+      placeholder={placeholder}
     />
   );
 }

@@ -3,6 +3,7 @@ import AddGradesForm from "./components/AddGradesForm/AddGradesForm";
 import GradesTable from "./components/GradesTable/GradesTable";
 import { TAddGradesForm } from "./types/TAddGradesForm";
 import { TGradesList } from "./types/TGradesList";
+import CustomInput from "./components/CustomInput/CustomInput";
 
 export default function App() {
   const [addGradesForm, setAddGradesForm] = useState<TAddGradesForm>({
@@ -46,10 +47,19 @@ export default function App() {
 
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center bg-black">
-      <section className="flex flex-row gap-4 2xl:w-[1536px]">
+      <section className="flex flex-row items-start justify-center gap-4 2xl:w-[1536px]">
         <AddGradesForm onChange={handleChange} />
 
-        <GradesTable gradesList={gradesList} />
+        <div className="flex flex-col gap-4">
+          <CustomInput
+            className="w-1/2"
+            id="searchCourse"
+            name="searchCourse"
+            type="text"
+            placeholder="Search Course"
+          />
+          <GradesTable gradesList={gradesList} />
+        </div>
       </section>
     </main>
   );
