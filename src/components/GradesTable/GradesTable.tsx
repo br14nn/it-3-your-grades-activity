@@ -1,4 +1,5 @@
 import CustomTd from "./CustomTd";
+import { gradesListFilterer } from "../../utils/gradesListFilterer";
 import { TGradesData } from "../../types/TGradesData";
 
 type TGradesTableProps = {
@@ -11,17 +12,8 @@ export default function GradesTable({
   searchCourseValue,
 }: TGradesTableProps) {
   const gradeListRenderer = () => {
-    const filteredValue = gradesList
-      .filter(
-        (val: TGradesData) =>
-          val.courseName
-            .toLowerCase()
-            .includes(searchCourseValue.toLowerCase()) ||
-          val.courseNumb
-            .toLocaleLowerCase()
-            .includes(searchCourseValue.toLowerCase()),
-      )
-      .map((val, idx) => {
+    const filteredList = gradesListFilterer(gradesList, searchCourseValue).map(
+      (val, idx) => {
         const grade = parseFloat(val.courseGrade);
 
         return (
@@ -46,9 +38,32 @@ export default function GradesTable({
             )}
           </tr>
         );
-      });
+      },
+    );
 
-    return filteredValue;
+    return filteredList;
+  };
+
+  const qpiCalculation = () => {
+    const gradeSum = gradesListFilterer(gradesList, searchCourseValue).reduce(
+      (acc: number, filteredData: TGradesData) => {
+        return (
+          parseFloat(filteredData.courseGrade.toString()) *
+            parseFloat(filteredData.courseUnits.toString()) +
+          acc
+        );
+      },
+      0,
+    );
+
+    const totalUnits = gradesListFilterer(gradesList, searchCourseValue).reduce(
+      (acc: number, fiteredData: TGradesData) => {
+        return parseFloat(fiteredData.courseUnits.toString()) + acc;
+      },
+      0,
+    );
+
+    return (gradeSum / totalUnits).toFixed(2);
   };
 
   return (
@@ -70,7 +85,9 @@ export default function GradesTable({
           >
             Total QPI
           </td>
-          <td className="border text-center">0</td>
+          <td className="border text-center">
+            {qpiCalculation() !== "NaN" && qpiCalculation()}
+          </td>
         </tr>
       </tfoot>
     </table>
