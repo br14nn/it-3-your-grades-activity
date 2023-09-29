@@ -1,4 +1,4 @@
-export type TGradesList = {
+export type TGradesData = {
   courseNumb: string;
   courseName: string;
   courseUnits: number;

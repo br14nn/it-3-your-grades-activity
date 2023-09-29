@@ -21,6 +21,7 @@ export default function GradesRadioInput({
         id={id}
         onChange={onChange}
         value={value}
+        required={true}
       />
       <label className="text-white" htmlFor={id}>
         {label}

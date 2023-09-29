@@ -1,20 +1,18 @@
 import { useState } from "react";
 import AddGradesForm from "./components/AddGradesForm/AddGradesForm";
 import GradesTable from "./components/GradesTable/GradesTable";
-import { TAddGradesForm } from "./types/TAddGradesForm";
-import { TGradesList } from "./types/TGradesList";
-import CustomInput from "./components/CustomInput/CustomInput";
+import { TGradesData } from "./types/TGradesData";
 import CourseSearchForm from "./components/CourseSearchForm/CourseSearchForm";
 
 export default function App() {
-  const [addGradesForm, setAddGradesForm] = useState<TAddGradesForm>({
-    courseNumb: 0,
+  const [gradesFormData, setGradesFormData] = useState<TGradesData>({
+    courseNumb: "",
     courseName: "",
     courseUnits: 0,
     courseGrade: 0,
   });
 
-  const [gradesList, setGradesList] = useState<TGradesList[]>([
+  const [gradesList, setGradesList] = useState<TGradesData[]>([
     {
       courseNumb: "IT001",
       courseName: "IT Elective 1",
@@ -38,7 +36,7 @@ export default function App() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
 
-    setAddGradesForm((oldVal) => {
+    setGradesFormData((oldVal) => {
       return {
         ...oldVal,
         [name]: value,
@@ -46,10 +44,18 @@ export default function App() {
     });
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setGradesList((oldVal) => {
+      return [gradesFormData, ...oldVal];
+    });
+  };
+
   return (
     <main className="flex h-screen min-h-[500px] w-full flex-col items-center justify-center bg-black">
       <section className="flex flex-row items-start justify-center gap-8 2xl:w-[1536px]">
-        <AddGradesForm onChange={handleChange} />
+        <AddGradesForm onSubmit={handleSubmit} onChange={handleChange} />
 
         <div className="flex flex-col gap-4 2xl:w-[40%]">
           <CourseSearchForm />
