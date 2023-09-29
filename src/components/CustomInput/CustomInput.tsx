@@ -19,13 +19,14 @@ export default function CustomInput({
 }: TCustomInputProps) {
   return (
     <input
-      className={`${className}`}
+      className={`${className} default-input-style h-fit`}
       id={id}
       name={name}
       type={type}
       onChange={onChange}
       value={value}
       placeholder={placeholder}
+      autoComplete="off"
     />
   );
 }

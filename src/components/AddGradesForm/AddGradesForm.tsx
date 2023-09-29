@@ -1,5 +1,6 @@
-import CustomInput from "../CustomInput/CustomInput";
-import GradesRadioInput from "./GradesRadioInput";
+import CustomButton from "../CustomButton/CustomButton";
+import AddGradesFormInput from "./AddGradesFormInput";
+import AddGradesFormRadio from "./AddGradesFormRadio";
 
 type TAddGradesFormProps = {
   onChange: React.ChangeEventHandler;
@@ -8,92 +9,67 @@ type TAddGradesFormProps = {
 export default function AddGradesForm({ onChange }: TAddGradesFormProps) {
   return (
     <form className="flex flex-col gap-4">
-      <div className="flex flex-col">
-        <label className="text-white" htmlFor="courseNumb">
-          Course No.
-        </label>
-        <CustomInput
-          className="px-2 leading-none"
-          id="courseNumb"
-          name="courseNumb"
-          type="text"
-          onChange={onChange}
-        />
-      </div>
+      <AddGradesFormInput
+        label="Course No."
+        id="courseNumb"
+        onChange={onChange}
+      />
 
-      <div className="flex flex-col">
-        <label className="text-white" htmlFor="courseName">
-          Course Name
-        </label>
-        <CustomInput
-          className="px-2 leading-none"
-          id="courseName"
-          name="courseName"
-          type="text"
-          onChange={onChange}
-        />
-      </div>
+      <AddGradesFormInput
+        label="Course Name"
+        id="courseName"
+        onChange={onChange}
+      />
 
-      <div className="flex flex-col">
-        <label className="text-white" htmlFor="units">
-          Units
-        </label>
-        <CustomInput
-          className="px-2 leading-none"
-          id="units"
-          name="courseUnits"
-          type="number"
-          onChange={onChange}
-        />
-      </div>
+      <AddGradesFormInput label="Units" id="courseUnits" onChange={onChange} />
 
       <div className="flex flex-col">
         <label className="text-white">Grade</label>
 
         <div className="grid grid-cols-2">
-          <GradesRadioInput
+          <AddGradesFormRadio
             id="gradeA"
             name="courseGrade"
             value={4.0}
             label="A"
             onChange={onChange}
           />
-          <GradesRadioInput
+          <AddGradesFormRadio
             id="gradeB+"
             name="courseGrade"
             value={3.5}
             label="B+"
             onChange={onChange}
           />
-          <GradesRadioInput
+          <AddGradesFormRadio
             id="gradeB"
             name="courseGrade"
             value={3.0}
             label="B"
             onChange={onChange}
           />
-          <GradesRadioInput
+          <AddGradesFormRadio
             id="gradeC+"
             name="courseGrade"
             value={2.5}
             label="C+"
             onChange={onChange}
           />
-          <GradesRadioInput
+          <AddGradesFormRadio
             id="gradeC"
             name="courseGrade"
             value={2.0}
             label="C"
             onChange={onChange}
           />
-          <GradesRadioInput
+          <AddGradesFormRadio
             id="gradeD"
             name="courseGrade"
             value={1.0}
             label="D"
             onChange={onChange}
           />
-          <GradesRadioInput
+          <AddGradesFormRadio
             id="gradeF"
             name="courseGrade"
             value={0.0}
@@ -103,9 +79,9 @@ export default function AddGradesForm({ onChange }: TAddGradesFormProps) {
         </div>
       </div>
 
-      <button className="rounded bg-green-800 text-white" type="submit">
-        Submit
-      </button>
+      <CustomButton className="bg-yellow-400" type="submit">
+        Add Grade
+      </CustomButton>
     </form>
   );
 }
