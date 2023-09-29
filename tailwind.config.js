@@ -5,7 +5,11 @@ import { defaultButtonStyle } from "./src/plugins/default-button-style";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: "360px",
+      },
+    },
   },
   plugins: [defaultInputStyle, defaultButtonStyle],
 };
