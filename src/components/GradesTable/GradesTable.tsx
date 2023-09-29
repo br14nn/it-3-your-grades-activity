@@ -9,10 +9,10 @@ export default function GradesTable({ gradesList }: TGradesTableProps) {
     <table className="h-fit text-white">
       <thead>
         <tr className="bg-blue-900 font-bold">
-          <CustomTd>Course No.</CustomTd>
-          <CustomTd>Course Name</CustomTd>
-          <CustomTd>Units</CustomTd>
-          <CustomTd>Grade</CustomTd>
+          <CustomTd className="min-w-[150px]">Course No.</CustomTd>
+          <CustomTd className="min-w-[300px]">Course Name</CustomTd>
+          <CustomTd className="min-w-[50px]">Units</CustomTd>
+          <CustomTd className="min-w-[50px]">Grade</CustomTd>
         </tr>
       </thead>
       <tbody>
@@ -33,6 +33,17 @@ export default function GradesTable({ gradesList }: TGradesTableProps) {
           </tr>
         ))}
       </tbody>
+      <tfoot>
+        <tr className="bg-blue-950">
+          <td
+            className="border border-white px-2 text-end font-bold"
+            colSpan={3}
+          >
+            Total QPI
+          </td>
+          <td className="border text-center">0</td>
+        </tr>
+      </tfoot>
     </table>
   );
 }
