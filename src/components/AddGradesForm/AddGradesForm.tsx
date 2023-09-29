@@ -18,7 +18,10 @@ export default function AddGradesForm({
   courseUnitsValue,
 }: TAddGradesFormProps) {
   return (
-    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+    <form
+      className="flex h-fit flex-col gap-4 rounded-lg bg-gray-500 p-4"
+      onSubmit={onSubmit}
+    >
       <AddGradesFormInput
         label="Course No."
         id="courseNumb"

@@ -1,6 +1,4 @@
-import CustomButton from "../CustomButton/CustomButton";
 import CustomInput from "../CustomInput/CustomInput";
-import { BsSearch } from "react-icons/bs";
 
 type TCourseSearchFormProps = {
   value?: string;
@@ -13,7 +11,7 @@ export default function CourseSearchForm({
 }: TCourseSearchFormProps) {
   return (
     <CustomInput
-      className="w-[40%] leading-none 2xl:w-[45%]"
+      className="w-[50%] leading-none"
       id="searchCourse"
       name="searchCourse"
       type="text"

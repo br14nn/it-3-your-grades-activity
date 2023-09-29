@@ -52,8 +52,8 @@ export default function App() {
   };
 
   return (
-    <main className="flex h-screen min-h-[500px] w-full flex-col items-center justify-center bg-black">
-      <section className="flex flex-row items-start justify-center gap-8 2xl:w-[1536px]">
+    <main className="flex h-full w-full min-w-[500px] overflow-hidden overflow-y-auto bg-black p-12 sm:p-24">
+      <section className="flex h-fit w-full flex-col items-start justify-center gap-8 lg:flex-row ">
         <AddGradesForm
           onSubmit={handleSubmit}
           onChange={handleChange}
@@ -62,7 +62,7 @@ export default function App() {
           courseUnitsValue={gradesFormData.courseUnits}
         />
 
-        <div className="flex flex-col gap-4 2xl:w-[40%]">
+        <div className="flex w-full max-w-[768px] flex-col gap-4">
           <CourseSearchForm value={searchCourseVal} onChange={handleChange} />
           <GradesTable
             gradesList={gradesList}
