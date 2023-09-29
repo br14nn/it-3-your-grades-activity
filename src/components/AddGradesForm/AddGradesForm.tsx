@@ -3,12 +3,16 @@ import AddGradesFormInput from "./AddGradesFormInput";
 import AddGradesFormRadio from "./AddGradesFormRadio";
 
 type TAddGradesFormProps = {
+  onSubmit: React.FormEventHandler;
   onChange: React.ChangeEventHandler;
 };
 
-export default function AddGradesForm({ onChange }: TAddGradesFormProps) {
+export default function AddGradesForm({
+  onSubmit,
+  onChange,
+}: TAddGradesFormProps) {
   return (
-    <form className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       <AddGradesFormInput
         label="Course No."
         id="courseNumb"
@@ -21,7 +25,12 @@ export default function AddGradesForm({ onChange }: TAddGradesFormProps) {
         onChange={onChange}
       />
 
-      <AddGradesFormInput label="Units" id="courseUnits" onChange={onChange} />
+      <AddGradesFormInput
+        label="Units"
+        id="courseUnits"
+        type="number"
+        onChange={onChange}
+      />
 
       <div className="flex flex-col">
         <label className="text-white">Grade</label>

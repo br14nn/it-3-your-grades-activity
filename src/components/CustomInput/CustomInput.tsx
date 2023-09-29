@@ -6,6 +6,9 @@ type TCustomInputProps = {
   type: React.HTMLInputTypeAttribute;
   value?: string | number | readonly string[] | undefined;
   placeholder?: string;
+  required?: boolean;
+  min?: number;
+  max?: number;
 };
 
 export default function CustomInput({
@@ -16,6 +19,9 @@ export default function CustomInput({
   onChange,
   value,
   placeholder,
+  required,
+  min,
+  max,
 }: TCustomInputProps) {
   return (
     <input
@@ -27,6 +33,9 @@ export default function CustomInput({
       value={value}
       placeholder={placeholder}
       autoComplete="off"
+      required={required}
+      min={min}
+      max={max}
     />
   );
 }

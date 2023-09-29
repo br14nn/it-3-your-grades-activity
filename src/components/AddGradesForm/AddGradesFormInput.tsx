@@ -2,12 +2,14 @@ import CustomInput from "../CustomInput/CustomInput";
 
 type TAddGradesFormInputProps = {
   id?: string;
+  type?: React.HTMLInputTypeAttribute;
   label?: string;
   onChange?: React.ChangeEventHandler;
 };
 
 export default function AddGradesFormInput({
   id,
+  type = "text",
   label,
   onChange,
 }: TAddGradesFormInputProps) {
@@ -16,7 +18,15 @@ export default function AddGradesFormInput({
       <label className="text-white" htmlFor={id}>
         {label}
       </label>
-      <CustomInput id={id} name={id} type="text" onChange={onChange} />
+      <CustomInput
+        id={id}
+        name={id}
+        type={type}
+        onChange={onChange}
+        required={true}
+        min={1}
+        max={5}
+      />
     </div>
   );
 }
