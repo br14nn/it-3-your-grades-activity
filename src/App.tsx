@@ -12,26 +12,7 @@ export default function App() {
     courseUnits: 0,
     courseGrade: 0,
   });
-  const [gradesList, setGradesList] = useState<TGradesData[] | []>([
-    {
-      courseNumb: "IT001",
-      courseName: "Computer Programming 1",
-      courseUnits: 5,
-      courseGrade: 3.0,
-    },
-    {
-      courseNumb: "CS001",
-      courseName: "Introduction to Computing",
-      courseUnits: 5,
-      courseGrade: 3.5,
-    },
-    {
-      courseNumb: "GE001",
-      courseName: "Philosophy",
-      courseUnits: 3,
-      courseGrade: 2,
-    },
-  ]);
+  const [gradesList, setGradesList] = useState<TGradesData[] | []>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
