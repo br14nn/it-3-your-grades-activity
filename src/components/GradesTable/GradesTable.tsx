@@ -1,10 +1,56 @@
 import CustomTd from "./CustomTd";
+import { TGradesData } from "../../types/TGradesData";
 
 type TGradesTableProps = {
   gradesList: any[];
+  searchCourseValue: string;
 };
 
-export default function GradesTable({ gradesList }: TGradesTableProps) {
+export default function GradesTable({
+  gradesList,
+  searchCourseValue,
+}: TGradesTableProps) {
+  const gradeListRenderer = () => {
+    const filteredValue = gradesList
+      .filter(
+        (val: TGradesData) =>
+          val.courseName
+            .toLowerCase()
+            .includes(searchCourseValue.toLowerCase()) ||
+          val.courseNumb
+            .toLocaleLowerCase()
+            .includes(searchCourseValue.toLowerCase()),
+      )
+      .map((val, idx) => {
+        const grade = parseFloat(val.courseGrade);
+
+        return (
+          <tr key={`${val.courseNumb}-${idx}`}>
+            <CustomTd>{val.courseNumb}</CustomTd>
+            <CustomTd>{val.courseName}</CustomTd>
+            <CustomTd>{val.courseUnits}</CustomTd>
+            {grade === 4.0 ? (
+              <CustomTd>A</CustomTd>
+            ) : grade === 3.5 ? (
+              <CustomTd>B+</CustomTd>
+            ) : grade === 3.0 ? (
+              <CustomTd>B</CustomTd>
+            ) : grade === 2.5 ? (
+              <CustomTd>C+</CustomTd>
+            ) : grade === 2.0 ? (
+              <CustomTd>C</CustomTd>
+            ) : grade === 1.0 ? (
+              <CustomTd>D</CustomTd>
+            ) : (
+              grade === 0.0 && <CustomTd className="text-red-600">F</CustomTd>
+            )}
+          </tr>
+        );
+      });
+
+    return filteredValue;
+  };
+
   return (
     <table className="h-fit text-white">
       <thead>
@@ -15,24 +61,7 @@ export default function GradesTable({ gradesList }: TGradesTableProps) {
           <CustomTd className="min-w-[50px]">Grade</CustomTd>
         </tr>
       </thead>
-      <tbody>
-        {gradesList.map((val, idx) => (
-          <tr key={`${val.courseNumb}-${idx}`}>
-            <CustomTd>{val.courseNumb}</CustomTd>
-            <CustomTd>{val.courseName}</CustomTd>
-            <CustomTd>{val.courseUnits}</CustomTd>
-            {parseFloat(val.courseGrade) === 4.0 && <CustomTd>A</CustomTd>}
-            {parseFloat(val.courseGrade) === 3.5 && <CustomTd>B+</CustomTd>}
-            {parseFloat(val.courseGrade) === 3.0 && <CustomTd>B</CustomTd>}
-            {parseFloat(val.courseGrade) === 2.5 && <CustomTd>C+</CustomTd>}
-            {parseFloat(val.courseGrade) === 2.0 && <CustomTd>C</CustomTd>}
-            {parseFloat(val.courseGrade) === 1.0 && <CustomTd>D</CustomTd>}
-            {parseFloat(val.courseGrade) === 0.0 && (
-              <CustomTd className="text-red-600">F</CustomTd>
-            )}
-          </tr>
-        ))}
-      </tbody>
+      <tbody>{gradeListRenderer()}</tbody>
       <tfoot>
         <tr className="bg-blue-950">
           <td
