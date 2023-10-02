@@ -43,6 +43,7 @@ export default function App() {
       return [gradesFormData, ...oldVal];
     });
 
+    e.currentTarget.reset();
     setGradesFormData({
       courseNumb: "",
       courseName: "",
